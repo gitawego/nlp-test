@@ -1,0 +1,36 @@
+[
+  {
+    "intent": "account.creationfailed",
+    "documents": [
+      [
+        "en",
+        "I can't create account for %service%"
+      ],
+      [
+        "en",
+        "the account creation is failed for %service%"
+      ],
+      [
+        "en",
+        "how to create account for %service% ?"
+      ]
+    ],
+    "entity": {
+      "service": {
+        "addAfterLastCondition": [
+          "en",
+          "for"
+        ]
+      }
+    },
+    "slots": [
+      [
+        "service",
+        true,
+        {
+          "en": "Which service are you talking about ?"
+        }
+      ]
+    ]
+  }
+]
