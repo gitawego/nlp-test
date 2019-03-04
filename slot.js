@@ -7,8 +7,8 @@ const nlpManager = new NlpManager({ languages: ['en'] });
 
 async function train(manager) {
   for (const slot of slots) {
-    Object.keys(slot.entity).forEach((entityName) => {
-      const entityConfig = slot.entity[entityName];
+    Object.keys(slot.entities).forEach((entityName) => {
+      const entityConfig = slot.entities[entityName];
       const entity = manager.addTrimEntity('entityName');
       Object.keys(entityConfig).forEach(methodName => {
         entity[methodName](...entityConfig[methodName]);

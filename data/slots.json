@@ -15,7 +15,7 @@
         "how to create account for %service% ?"
       ]
     ],
-    "entity": {
+    "entities": {
       "service": {
         "addAfterLastCondition": [
           "en",
