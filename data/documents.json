@@ -1,0 +1,14 @@
+[
+  {
+    "type": "document",
+    "lang": "en",
+    "text": "hello",
+    "intent": "greeting"
+  },
+  {
+    "type": "answer",
+    "lang": "en",
+    "text": "hi",
+    "intent": "greeting"
+  }
+]

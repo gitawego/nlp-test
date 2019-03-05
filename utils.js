@@ -32,3 +32,22 @@ exports.addTrimEntity = function addTrimEntity(manager, entity) {
     entity[condition[0]](condition.slice(1));
   }
 }
+
+exports.addDocuments = function addDocuments(manager, entities) {
+  for (const entity of entities) {
+    if (entity.type === 'document') {
+      exports.addDocument(manager, entity);
+    }
+    if (entity.type === 'answer') {
+      exports.addAnswer(manager, entity);
+    }
+  }
+}
+
+exports.addDocument = function addDocument(manager, entity) {
+  manager.addDocument(entity.lang, entity.text, entity.intent);
+}
+
+exports.addAnswer = function addAnswer(manager, entity) {
+  manager.addAnswer(entity.lang, entity.intent, entity.text);
+}
