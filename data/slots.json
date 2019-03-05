@@ -20,16 +20,19 @@
       ]
     ],
     "entities": {
-      "service": {
-        "addBetweenCondition": [
-          "en",
-          "for",
+      "service": [
+        [
+          "addBetweenCondition",
           [
-            "\\?",
-            "\\."
+            "en",
+            "for",
+            [
+              "\\?",
+              "\\."
+            ]
           ]
         ]
-      }
+      ]
     },
     "slots": [
       [
