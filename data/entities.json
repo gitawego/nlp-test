@@ -1,0 +1,45 @@
+[
+  {
+    "method": "addNamedEntityText",
+    "arguments": [
+      "os",
+      "cpu",
+      [
+        "en"
+      ],
+      [
+        "cpu",
+        "processor"
+      ]
+    ]
+  },
+  {
+    "method": "addRegexEntity",
+    "arguments": [
+      "common",
+      "email",
+      "\\b(\\w[-._\\w]*\\w@\\w[-._\\w]*\\w\\.\\w{2,3})\\b"
+    ]
+  },
+  {
+    "method": "addTrimEntity",
+    "name": "fromEntity",
+    "conditions": [
+      [
+        "addBetweenCondition",
+        [
+          "en",
+          "to",
+          "from"
+        ]
+      ],
+      [
+        "addAfterLastCondition",
+        [
+          "en",
+          "from"
+        ]
+      ]
+    ]
+  }
+]

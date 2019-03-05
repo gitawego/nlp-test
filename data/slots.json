@@ -4,22 +4,30 @@
     "documents": [
       [
         "en",
-        "I can't create account for %service%"
+        "I can't create account for %service%."
       ],
       [
         "en",
-        "the account creation is failed for %service%"
+        "the account creation is failed for %service%."
       ],
       [
         "en",
         "how to create account for %service% ?"
+      ],
+      [
+        "en",
+        "how do I create account for %service% ?"
       ]
     ],
     "entities": {
       "service": {
-        "addAfterLastCondition": [
+        "addBetweenCondition": [
           "en",
-          "for"
+          "for",
+          [
+            "\\?",
+            "\\."
+          ]
         ]
       }
     },
