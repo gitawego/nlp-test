@@ -34,5 +34,11 @@
     "lang": "fr",
     "text": "bonjour",
     "intent": "greeting"
+  },
+  {
+    "type": "answer",
+    "lang": "fr",
+    "text": "salut",
+    "intent": "greeting"
   }
 ]

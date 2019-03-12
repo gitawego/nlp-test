@@ -28,7 +28,6 @@ class NLPBuilder {
   addEntities(entities, manager = this.manager) {
     for (const entity of entities) {
       if (entity.method in this) {
-        console.log('entity', entity);
         this[entity.method](entity, manager);
       } else {
         manager[entity.method](entity.arguments);
@@ -37,7 +36,6 @@ class NLPBuilder {
   }
 
   addTrimEntity(entity, manager = this.manager) {
-    console.log('add trim entity', entity);
     const trimedEntity = manager.addTrimEntity(entity.name);
     for (const condition of entity.conditions) {
       trimedEntity[condition[0]](...condition[1]);
