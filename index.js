@@ -26,7 +26,7 @@ const { NlpManager } = require('node-nlp');
 const trainnlp = require('./train-nlp');
 
 const threshold = 0.7;
-const nlpManager = new NlpManager({ languages: ['en'] });
+const nlpManager = new NlpManager({ languages: ['en', 'fr'] });
 
 function say(message) {
   // eslint-disable-next-line no-console
@@ -47,7 +47,7 @@ function say(message) {
       process.exit();
     } else {
       const result = await nlpManager.process(line);
-      console.log('result',result);
+      console.log('result', result);
       const answer =
         result.score > threshold && result.answer
           ? result.answer
@@ -56,7 +56,7 @@ function say(message) {
       if (result.sentiment.score !== 0) {
         sentiment = `  ${result.sentiment.score > 0 ? ':)' : ':('}   (${
           result.sentiment.score
-        })`;
+          })`;
       }
       say(`bot> ${answer}${sentiment}`);
     }
