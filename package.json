@@ -4,6 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "node-nlp": "^2.4.2"
+    "node-nlp": "^2.5.2"
+  },
+  "devDependencies": {
+    "eslint": "^5.15.3"
   }
 }

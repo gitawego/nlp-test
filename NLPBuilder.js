@@ -44,21 +44,16 @@ class NLPBuilder {
 
   addDocuments(entities, manager = this.manager) {
     for (const entity of entities) {
-      if (entity.type === 'document') {
-        this.addDocument(entity, manager);
-      }
-      if (entity.type === 'answer') {
-        this.addAnswer(entity, manager);
-      }
+      manager.addDocument(entity.lang, entity.text, entity.intent);
     }
   }
-
-  addDocument(entity, manager = this.manager) {
-    manager.addDocument(entity.lang, entity.text, entity.intent);
+  addAnswers(entities,manager = this.manager){
+    for (const entity of entities) {
+      manager.addAnswer(entity.lang, entity.intent, entity.text);
+    }
   }
-
-  addAnswer(entity, manager = this.manager) {
-    manager.addAnswer(entity.lang, entity.intent, entity.text);
+  train(){
+    return this.manager.train();
   }
 
 }

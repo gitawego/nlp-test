@@ -1,0 +1,37 @@
+sequenceDiagram
+    participant Visitor
+    participant Bot
+    participant Intent
+    Visitor->>Bot: conversatioin
+    loop intent analyse
+      Bot->>Intent: analyse visitor intent
+      Intent->>Bot: send intent info
+    end
+    alt common intent
+      Visitor ->> Bot: general conversation
+      Bot ->> Visitor: random answer
+    else PLT related intent
+      Visitor ->> Bot: Platform related intent
+      Bot ->> Intent: analyse use "slot filling"
+      Intent ->> Bot: send sloted intent info
+      Bot ->> Visitor: ask missing information
+      Visitor ->> Bot: provide missing information
+      Bot ->> Visitor: ask for action confirmation
+      alt action confirmed
+        Visitor ->> Bot: confirm action
+        Bot ->> Server: take action
+        Server ->> Bot: send response
+        Bot ->> Visitor: tell visitor response
+      else action rejected
+        Visitor ->> Bot: reject action
+        Bot ->> Visitor: ask for intent
+        Visitor ->> Bot: provide intent
+        Bot ->> Server: store question and intent for human labelisation
+        Bot ->> Mattermost: create chat channel with recorded conversation
+      end
+    else no matched definition
+      Bot -->> Visitor: ask for intent
+      Visitor ->> Bot: tell intent
+      Bot ->> Server: store question and intent for human labelisation
+      Bot ->> Mattermost: create chat channel with recorded conversation
+    end

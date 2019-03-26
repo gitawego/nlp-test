@@ -1,5 +1,6 @@
 const slots = require('./data/slots.json');
 const documents = require('./data/documents.json');
+const answers = require('./data/answers.json')
 const entities = require('./data/entities.json');
 const { NlpManager } = require('node-nlp');
 const { NLPBuilder } = require('./NLPBuilder');
@@ -9,32 +10,17 @@ const nlpManager = new NlpManager({ languages: ['en', 'fr'] });
 
 const nlpBuilder = new NLPBuilder(nlpManager);
 
-async function train(manager) {
-  nlpBuilder.addSlots(slots);
+async function train() {
   nlpBuilder.addDocuments(documents);
-  nlpBuilder.addEntities(entities);
-  await manager.train();
+  nlpBuilder.addAnswers(answers);
+  //nlpBuilder.addSlots(slots);
+  // nlpBuilder.addEntities(entities);
+  await nlpBuilder.train();
+  nlpBuilder.manager.save('./example.nlp');
 }
 
-function say(message) {
-  // eslint-disable-next-line no-console
-  console.log(message);
-}
-
-(async () => {
-  await train(nlpManager);
-  say('Say something!');
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-    terminal: false,
-  });
-  rl.on('line', async line => {
-    if (line.toLowerCase() === 'quit') {
-      rl.close();
-      process.exit();
-    } else {
-      const result = await nlpManager.process(line);
+async function answer(line){
+  const result = await nlpManager.process(line);
       console.log('result', result);
       const answer =
         result.score > threshold && result.answer
@@ -46,7 +32,29 @@ function say(message) {
           result.sentiment.score
           })`;
       }
-      say(`bot> ${answer}${sentiment}`);
+     return `${answer}${sentiment}`;
+}
+
+function say(message) {
+  // eslint-disable-next-line no-console
+  console.log(message);
+}
+
+(async () => {
+  await train();
+  say('Say something!');
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+    terminal: false,
+  });
+  rl.on('line', async line => {
+    if (line.toLowerCase() === 'quit') {
+      rl.close();
+      process.exit();
+    } else {
+      const resp = await answer(line);
+      say(`bot> ${resp}`);
     }
   });
 })();

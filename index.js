@@ -33,6 +33,22 @@ function say(message) {
   console.log(message);
 }
 
+async function answer(line){
+  const result = await nlpManager.process(line);
+      console.log('result', result);
+      const answer =
+        result.score > threshold && result.answer
+          ? result.answer
+          : "Sorry, I don't understand";
+      let sentiment = '';
+      if (result.sentiment.score !== 0) {
+        sentiment = `  ${result.sentiment.score > 0 ? ':)' : ':('}   (${
+          result.sentiment.score
+          })`;
+      }
+     return `${answer}${sentiment}`;
+}
+
 (async () => {
   await trainnlp(nlpManager, say);
   say('Say something!');
@@ -46,19 +62,8 @@ function say(message) {
       rl.close();
       process.exit();
     } else {
-      const result = await nlpManager.process(line);
-      console.log('result', result);
-      const answer =
-        result.score > threshold && result.answer
-          ? result.answer
-          : "Sorry, I don't understand";
-      let sentiment = '';
-      if (result.sentiment.score !== 0) {
-        sentiment = `  ${result.sentiment.score > 0 ? ':)' : ':('}   (${
-          result.sentiment.score
-          })`;
-      }
-      say(`bot> ${answer}${sentiment}`);
+      const answer = await answer(line);
+      say(`bot> ${answer}`);
     }
   });
 })();

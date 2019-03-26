@@ -1,44 +1,17 @@
 [
   {
-    "type": "document",
     "lang": "en",
     "text": "hello",
     "intent": "greeting"
   },
   {
-    "type": "document",
     "lang": "en",
     "text": "hi",
     "intent": "greeting"
   },
   {
-    "type": "document",
     "lang": "fr",
     "text": "bonjour",
-    "intent": "greeting"
-  },
-  {
-    "type": "answer",
-    "lang": "en",
-    "text": "hi",
-    "intent": "greeting"
-  },
-  {
-    "type": "answer",
-    "lang": "en",
-    "text": "hello",
-    "intent": "greeting"
-  },
-  {
-    "type": "answer",
-    "lang": "fr",
-    "text": "bonjour",
-    "intent": "greeting"
-  },
-  {
-    "type": "answer",
-    "lang": "fr",
-    "text": "salut",
     "intent": "greeting"
   }
 ]
