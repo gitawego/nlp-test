@@ -6,9 +6,8 @@ const { NlpManager } = require('node-nlp');
 const { NLPBuilder } = require('./NLPBuilder');
 const readline = require('readline');
 const threshold = 0.7;
-const nlpManager = new NlpManager({ languages: ['en', 'fr'] });
 
-const nlpBuilder = new NLPBuilder(nlpManager);
+const nlpBuilder = new NLPBuilder({ languages: ['en', 'fr'] });
 
 async function train() {
   nlpBuilder.addDocuments(documents);
@@ -20,7 +19,7 @@ async function train() {
 }
 
 async function answer(line){
-  const result = await nlpManager.process(line);
+  const result = await nlpBuilder.process(line.trim());
       console.log('result', result);
       const answer =
         result.score > threshold && result.answer

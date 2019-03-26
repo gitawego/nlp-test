@@ -1,6 +1,11 @@
+const { Language } = require('node-nlp');
+const { NlpManager } = require('node-nlp');
+
 class NLPBuilder {
-  constructor(manager) {
-    this.manager = manager;
+  constructor(config) {
+    this.config = config;
+    this.manager = new NlpManager(this.config);
+    this.language = new Language();
   }
   addSlots(slots, manager = this.manager) {
     for (const slot of slots) {
@@ -54,6 +59,17 @@ class NLPBuilder {
   }
   train(){
     return this.manager.train();
+  }
+  guessLang(message){
+    const guess = this.language.guessBest(message,this.config.languages);
+    console.log('guess',guess);
+    return guess;
+  }
+  process(message,lang){
+    if(!lang){
+      lang = this.guessLang(message).alpha2;
+    }
+    return this.manager.process(lang,message);
   }
 
 }

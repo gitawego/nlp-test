@@ -1,20 +1,20 @@
 [{
   "lang": "en",
   "text": "hi",
-  "intent": "greeting"
+  "intent": "greeting.hello"
 },
 {
   "lang": "en",
   "text": "hello",
-  "intent": "greeting"
+  "intent": "greeting.hello"
 },
 {
   "lang": "fr",
   "text": "bonjour",
-  "intent": "greeting"
+  "intent": "greeting.hello"
 },
 {
   "lang": "fr",
   "text": "salut",
-  "intent": "greeting"
+  "intent": "greeting.hello"
 }]

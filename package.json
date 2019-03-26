@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "natural": "^0.6.3",
     "node-nlp": "^2.5.2"
   },
   "devDependencies": {

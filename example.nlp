@@ -14,7 +14,7 @@
     "fr"
   ],
   "intentDomains": {
-    "greeting": "default"
+    "greeting.hello": "default"
   },
   "nerManager": {
     "settings": {},
@@ -43,13 +43,13 @@
       "language": "en",
       "docs": [
         {
-          "intent": "greeting",
+          "intent": "greeting.hello",
           "utterance": [
             "hello"
           ]
         },
         {
-          "intent": "greeting",
+          "intent": "greeting.hello",
           "utterance": [
             "hi"
           ]
@@ -61,7 +61,7 @@
       },
       "logistic": {
         "observations": {
-          "greeting": [
+          "greeting.hello": [
             [],
             [
               1
@@ -69,7 +69,7 @@
           ]
         },
         "labels": [
-          "greeting"
+          "greeting.hello"
         ],
         "observationCount": 2,
         "theta": [
@@ -94,7 +94,7 @@
           }
         },
         "classifierMap": {
-          "greeting": {
+          "greeting.hello": {
             "sizes": [
               2,
               1
@@ -106,10 +106,10 @@
               },
               {
                 "0": {
-                  "bias": 62.70884323120117,
+                  "bias": 62.9367790222168,
                   "weights": {
-                    "hello": 35.05572509765625,
-                    "hi": 35.071292877197266
+                    "hello": 34.80232238769531,
+                    "hi": 34.87298583984375
                   }
                 }
               }
@@ -138,7 +138,7 @@
       "language": "fr",
       "docs": [
         {
-          "intent": "greeting",
+          "intent": "greeting.hello",
           "utterance": [
             "bonjour"
           ]
@@ -149,12 +149,12 @@
       },
       "logistic": {
         "observations": {
-          "greeting": [
+          "greeting.hello": [
             []
           ]
         },
         "labels": [
-          "greeting"
+          "greeting.hello"
         ],
         "observationCount": 1,
         "theta": [
@@ -178,7 +178,7 @@
           }
         },
         "classifierMap": {
-          "greeting": {
+          "greeting.hello": {
             "sizes": [
               1,
               1
@@ -189,9 +189,9 @@
               },
               {
                 "0": {
-                  "bias": 46.25975036621094,
+                  "bias": 46.308433532714844,
                   "weights": {
-                    "bonjour": 51.51294708251953
+                    "bonjour": 51.460777282714844
                   }
                 }
               }
@@ -219,7 +219,7 @@
   ],
   "responses": {
     "en": {
-      "greeting": [
+      "greeting.hello": [
         {
           "response": "hi"
         },
@@ -229,7 +229,7 @@
       ]
     },
     "fr": {
-      "greeting": [
+      "greeting.hello": [
         {
           "response": "bonjour"
         },
